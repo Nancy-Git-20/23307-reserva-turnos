@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import './css/cdn.jsdelivr.net_npm_bootstrap@5.2.3_dist_css_bootstrap.min.css';
+import './css/reset.css';
+import './css/layout.css';
+
+import {BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {LeftModule } from "./components/LeftModule";
+import {ShowTurnos} from "./components/ShowTurnos";
+import {CreateTurno3} from "./components/CreateTurno3";
+import {EditTurno3} from "./components/EditTurno3";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <div className="container-fluid">
+          <div className="row">
+            <LeftModule/>
+            <Routes>
+              <Route path="/" element={<ShowTurnos/>}/>
+              <Route path="/createTurno3" element={<CreateTurno3/>}/>
+              <Route path="/editTurno3/:id" element={<EditTurno3/>}/>
+            </Routes>
+          </div>
+        </div>  
+      </BrowserRouter>
+
     </div>
   );
 }
